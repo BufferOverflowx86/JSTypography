@@ -4,7 +4,7 @@
  * 
  * @version   2.2.5 (build 26.06.2013)
  * @author    Даниил Ерошенко "-1.#IND0000" <buffer.overflow.x86@gmail.com> (based on JSTypograf by UnderShot <mail@undershot.ru>)
- * @link      http://www.starwars-galaxy.ru/forum/22-1008-1
+ * @link      http://www.starwars-galaxy.ru/JSTypography/jstypograph.html
  * @license   http://www.freebsd.org/copyright/freebsd-license.html
  * @example   jstypograf({obj:["my_button","button2"],nbspobj:"sub_button",bind:"click",language:"rus",type:"norm",txts:["textarea1","bl17~textarea2","+abc"],off:["quotes"]})
  */
