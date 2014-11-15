@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
 		<link rel="icon" type="image/png" href="favicon.ico" />
@@ -160,9 +161,9 @@
 			if(!document.getElementById("h1").checked){
 				offlist=arrayEditor(offlist,"+h1");
 			}
-			/*if(!document.getElementById("list").checked){
-				offlist=arrayEditor(offlist,"+list");
-			}*/
+			if(!document.getElementById("claw").checked){
+				offlist=arrayEditor(offlist,"+claw");
+			}
 			//Задание новых настроек в типограф
 			changeTypoConf({language:document.getElementById("lang_rus").checked?"rus":"eng",type:document.getElementById("type_norm").checked?"norm":"html",off:offlist});
 		}
@@ -205,9 +206,9 @@
 							<input type="checkbox" value="on" name="nbsptabs" id="nbsptabs"><label for="nbsptabs"> Отступы для браузера</label>
 						</td>
 						<td width="15%" style="vertical-align:top;">
+							<input type="checkbox" value="on" name="claw" id="claw" checked><label for="claw"> Коготки</label><br />
 							<input type="checkbox" value="on" name="href" id="href" checked><label for="href"> HTML Ссылки</label><br />
-							<input type="checkbox" value="on" name="h1" id="h1" checked><label for="h1"> HTML Заголовки</label><br />
-							<!--<input type="checkbox" value="on" name="list" id="list" checked><label for="list"> HTML Списки</label>-->
+							<input type="checkbox" value="on" name="h1" id="h1" checked><label for="h1"> HTML Заголовки</label>
 						</td>
 					</tr>
 				</table>
@@ -229,51 +230,23 @@
 			<input type="button" onclick="jstypo_config();" id="typograf" value="Типографировать" />
 		</div>
 		<br>
-		<script type="text/javascript">
-		function toggleInstruction() {
-			var el = document.getElementById("instructions");
-			var gt = document.getElementById("instructionsToggler");
-			if ( el.style.display != 'none' ) {
-				el.style.display = 'none';
-			}
-			else {
-				el.style.display = '';
-			}
-		}
-		</script>
+<script type="text/javascript">
+function toggleInstruction() {
+ var el = document.getElementById("instructions");
+ var gt = document.getElementById("instructionsToggler");
+ if ( el.style.display != 'none' ) {
+ el.style.display = 'none';
+ }
+ else {
+ el.style.display = '';
+ }
+}
+</script>
 		<a href="#" onclick="toggleInstruction();return false" id="instructionsToggler" style="font-size: 16pt;">Если вы хотите установить типограф на свой сайт...</a>
 		<div id="instructions" class="text" style="display:none;">
 			<p>JSTypography — скрипт, который вы можете скачать, установить на свой сайт и привязать к любой форме ввода. К примеру, к форме ввода сообщений на форумах, добавления новостей, статей, рассказов и т. п. Так же, вы можете скачать страницу типографа и обрабатывать тексты без подключения к интернету. Размер входного текста не ограничен, что немаловажно для книг. Имеет два режима работы — вывод нормального текста и вывод текста с HTML-разметкой. Так же типограф поддерживает английские правила типографики. JSTypography имеет большой набор правил обработки, который совершенствовался в течение не одного года. Он значительно превосходит по возможностям большинство типографов, включая типограф от Лебедева, и схож по возможностям с типографом от Eugene Spearance.</p>
-			<p>Инструкция по установке:</p>
-			<p>1) Загрузите jstypography.js на сайт.</p>
-			<p>2) Теперь необходимо привязать типограф к форме ввода и установить его вызов при нажатии какой-нибудь кнопки. Необязательно кнопки, и необязательно при нажатии. Обычно это кнопка добавления сообщения (типограф не &laquo;перебьёт&raquo; родную функцию кнопки), но я предпочитаю иметь отдельную кнопку, чтобы знать, что я буду иметь на выходе. Для этого, откройте код целевой страницы, и в теге &lt;head> добавьте загрузку скрипта:</p>
-			<p><div style="border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight<5?this.style.height:scrollHeight>200?'200px':''+(this.scrollHeight+5)+'px');">&lt;script type="text/javascript" src="http&#58;//path/jstypography.js">&lt;/script></div></p>
-			<p>где path &mdash; адрес до скрипта. Можете указать адрес <a class="link" href="http://www.starwars-galaxy.ru/scripts/jstypography.js" rel="nofollow" target="_blank">http: //www.starwars-galaxy.ru/scripts/jstypography.js</a>, и в таком случае скрипт будет грузиться с нашего сайта.</p>
-			<p>Теперь, необходимо привязать скрипт. После кнопки добавьте строку с установкой типографа:</p>
-			<p><div style="border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight<5?this.style.height:scrollHeight>200?'200px':''+(this.scrollHeight+5)+'px');">&lt;script type="text/javascript"></p>
-			<p>jstypograph ({параметры}&#41;</p>
-			<p>&lt;/script></div></p>
-			<p>Теперь подробнее о параметрах. Параметры указываются через запятую, в формате &quot;параметр&quot;:&quot;значение&quot; (с кавычками). В случае, если значений несколько, к примеру, скрипт привязан к нескольким кнопкам, список значений указывается в квадратных скобках: &quot;параметр&quot;:[&quot;значение1&quot;,...,&quot;значениеN&quot;]. Доступные параметры:</p>
-			<p>&quot;obj&quot;: кнопка (или несколько), на которой будет &laquo;висеть&raquo; типограф.</p>
-			<p>&quot;tabobj&quot;: кнопка, при нажатию которой будет производиться замена отступов на неразрывные пробелы. Необходимо лишь для нормального режима, обработка должна происходить после окончания редактирования. Обычно это кнопка &laquo;Добавить сообщение&raquo;. Необязательно.</p>
-			<p>&quot;bind&quot;: событие, по которому будет запускаться типограф. Обычно &mdash; &laquo;click&raquo;.</p>
-			<p>&quot;language&quot;: язык. &quot;rus&quot; или &quot;eng&quot;, третьего не дано. Необязательно.</p>
-			<p>&quot;type&quot;: тип выводимых символов. &quot;norm&quot; или &quot;html&quot;. Обычно выбирают &laquo;norm&raquo;.</p>
-			<p>&quot;txts&quot;: Обрабатываемая textarea.</p>
-			<p>&quot;off&quot;: список отключаемых функций типографа, опять в квадратных скобках. Отключаемые функции: &quot;spaces&quot; (простановка и удаление пробелов), &quot;tabs&quot; (разметка параграфов), &quot;dashs&quot; (тире и дефис), &quot;chars&quot; (символы), &quot;quotes&quot; (кавычки), &quot;functions&quot; (псевдофункции), &quot;nbsp&quot; (неразрывные пробелы), &quot;br&quot; (расстановка тегов &lt;br>), &quot;href&quot; (выделение ссылок, доступно лишь в html), &quot;h1&quot; (выделение заголовков, доступно лишь в html). Необязательно.</p>
-			<p>Пример (полная обработка текста для людей):</p>
-			<p><div style="border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight<5?this.style.height:scrollHeight>200?'200px':''+(this.scrollHeight+5)+'px');">jstypograph({obj:&#91;&quot;button&quot;,&quot;button2&quot;],bind:&quot;click&quot;,language:&quot;rus&quot;,type:&quot;norm&quot;, txts:&#91;&quot;textarea1&quot;,&quot;bl17~textarea2&quot;],off:&#91;&quot;br&quot;]}&#41;</div></p>
-			<p>Пример установки на форум Ucoz (как у нас):</p>
-			<p>1) Зайдите в Панель Управления&rarr;Редактор страниц&rarr;Управление дизайном модуля&rarr;Форум&rarr;Форма добавления сообщения.</p>
-			<p>2) В начале кода добавьте строчку:</p>
-			<p><div style="border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight<5?this.style.height:scrollHeight>200?'200px':''+(this.scrollHeight+5)+'px');">&lt;script type="text/javascript" src="http&#58;//your_site/jstypography.js">&lt;/script></div></p>
-			<p>Получить адрес скрипта можно в файловом менеджере.</p>
-			<p>3) Найдите текст:</p>
-			<p><div style="border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight<5?this.style.height:scrollHeight>200?'200px':''+(this.scrollHeight+5)+'px');">&lt;input style="width:110px;" id="frF17" class="postReset" type="reset" value="Отменить" /></div></p>
-			<p>Сразу после него добавьте пробел и текст кнопки:</p>
-			<p><div style="border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight<5?this.style.height:scrollHeight>200?'200px':''+(this.scrollHeight+5)+'px');">&lt;input style="width:110px;" type="button" id="typograf" value="Типографировать"/></div></p>
-			<p>4) В конце всего кода добавьте строчку:</p>
-			<p><div style="border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight<5?this.style.height:scrollHeight>200?'200px':''+(this.scrollHeight+5)+'px');">&lt;script type="text/javascript">jstypograph ({obj:&quot;typograf&quot;, tabobj:&quot;frF16&quot;, bind:&quot;click&quot;, type:&quot;norm&quot;, txts:&quot;message&quot;, off:&quot;br&quot;}&#41; &lt;/script></div></p>
+			<p>Ссылки на скачивание:</p>
+			<p><a class="link" href="https://github.com/BufferOverflowx86/JSTypography" rel="nofollow" target="_blank">GitHub</a>.</p>
 		</div>
 		<br><br>
 		<div class="text">При нажатии кнопки «Типографировать» ваш текст приведётся к типографскому виду. Основные возможности:
@@ -292,8 +265,8 @@
 				<li>Функция СТРЛ(Направление) создаст символ стрелки. Направления: В,Н,П,Л,ЛП,ВН. Так же на стрелки заменяются ->, <-, <->
 				<li>Функция ГРАД(цифра) для указания градусов.
 				<li>Функция ПАРА(Римская/арабская цифра) для параграфа
-				<li>Функция ЕВРО(цифра) заменится на символа евро.
-				<li>Функция ФУНТ(буква) заменится на символа фунта.
+				<li>Функция ЕВРО(цифра) заменится на символ евро.
+				<li>Функция ФУНТ(буква) заменится на символ фунта.
 				<li>Функция ДЮЙМ(буква) заменится на дюйм.
 				<li>Функция КОРН(буква,цифра) подставит корень.
 				<li>Функция ИНТГ(буква,цифра) заменится на интеграл.
@@ -329,11 +302,11 @@
 		Скрипт не обрабатывает текст внутри кодов [code], [quote], &lt;pre&gt;, &lt;script&gt;, &lt;style&gt;, и &lt;untypo&gt;, не бьёт ссылки и html-коды.
 		Скрипт не скрипт не может поставить знак тире внутри диапазонов и указаний пути: 3–5 яиц, Москва—Санкт-Петербург. Использование -- в таких случаях подразумевается. Исключениями являются диапазоны дат и времени (1999–2001 гг., XX—XXI вв., 14–24 сентября, 11:30–13:00, в апреле—мае), т. к. здесь всё однозначно.
 		<br><br>
-		Большая просьба, по всем вопросам, пожеланиям, найденным ошибкам пишите <a href="http://www.starwars-galaxy.ru/forum/22-1008-1">на форум</a>, ICQ 436149026, либо на ящик <a href="mailto:buffer.overflow.x86@gmail.com">buffer.overflow.x86@gmail.com</a>
-		<br><br>© Даниил Ерошенко (-1.#IND0000 aka BufferOverflow), 2012–2013 год
+		Большая просьба, по всем вопросам, пожеланиям, найденным ошибкам пишите на ICQ 436149026, либо на ящик buffer.overflow.x86(собака)gmail(точка)com
+		<br><br>© Данил Ерошенко (BufferOverflow), 2012–2014 год
 		</div>
 		<!-- Инициализация типографа и его "подвес" на кнопку -->
-		<script type="text/javascript">jstypograph({obj:"typograf",tabobj:"typograf",bind:"click",language:"rus",type:"norm",txts:"jstypo_text"})</script>
+		<script type="text/javascript">jstypograph({obj:[document.getElementById("typograf")],tabobj:"typograf",bind:"click",language:"rus",type:"norm",txts:"jstypo_text"})</script>
 		
 	</body>
 </html>
