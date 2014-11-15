@@ -2,7 +2,7 @@
  * JS Typograph
  * The Javascript Typography Correcter
  * 
- * @version   2.2.6 (build 15.11.2014)
+ * @version   2.2.7 (build 15.11.2014)
  * @author    Данил Ерошенко «BufferOverflow» <buffer.overflow.x86 at gmail dot com> (based on JSTypograf by UnderShot <mail at undershot dot ru>)
  * @link      https://github.com/BufferOverflowx86/JSTypography
  * @license   http://www.freebsd.org/copyright/freebsd-license.html
@@ -305,6 +305,7 @@
 			//if(t("tabs")){
 				a=a.r(/<\/?p>/gi,"");
 				a=a.r(/<\/?h1>/gi,"");
+				a=a.r(/<\/?nbsp>/gi,"");
 			//}
 			/** замена символов © ® ™ **/
 			if(t("chars")){
