@@ -180,4 +180,4 @@ $(window).bind("load",function(){
 
     Большая просьба, по всем вопросам, пожеланиям, найденным ошибкам пишите на ICQ 436149026, либо на ящик buffer.overflow.x86(собака)gmail(точка)com . Так же буду благодарен за инструкции по установке на другие форумные и нефорумные движки.
 
-    © Даниил Ерошенко «BufferOverflow» <buffer.overflow.x86(собака)gmail(точка)com>, UnderShot <mail(собака)undershot(точка)ru>, 2012–2014 год
+    © Даниил Ерошенко «BufferOverflow» <buffer.overflow.x86(собака)gmail(точка)com>, UnderShot <mail(собака)undershot(точка)ru>, 2012–2018 год
