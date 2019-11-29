@@ -2,7 +2,7 @@
  * JS Typograph
  * The Javascript Typography Correcter
  *
- * @version   3.0.0
+ * @version   3.0.1
  * @author    «BufferOverflow»
  * @copyright Данил Ерошенко «BufferOverflow» <buffer.overflow.x86 at gmail dot com>
  * @link      https://github.com/BufferOverflowx86/JSTypography3
@@ -420,7 +420,7 @@
                     }
                     text = text.r(/<p>(UNTYPO[\d]+)<\/p>/g, "$1");
                     text = text.r(/<p><\/p>/g, "").r(/<p>(UNTYPO[\d]+S)<\/p>/g, "$1");
-                    text = text.r(/<p>(.*?<\/?)([uo]l|li)(>.*?)<\/p>/g, "$1$2$3");
+                    text = text.r(/<p>(.*?<\/?)([uo]l|li|h\d)(>.*?)<\/p>/g, "$1$2$3");
                 }
 
                 // Заголовки
