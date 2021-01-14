@@ -526,6 +526,9 @@
             }
         };
 		
+		// Привязывает метод typography к объекту (для корректной работы в обработчиках событий)
+        this.typography = this.typography.bind(this);
+		
 		// Привязывает кнопку для запуска типографа. Накладывает this.typography на onclick
         this.addButton = function(button) {
             addEvent(button, 'click', this.typography);
