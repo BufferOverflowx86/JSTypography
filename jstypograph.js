@@ -2,7 +2,7 @@
  * JS Typograph
  * The Javascript Typography Correcter
  *
- * @version   3.0.1
+ * @version   3.0.2
  * @author    «BufferOverflow»
  * @copyright Данил Ерошенко «BufferOverflow» <buffer.overflow.x86 at gmail dot com>
  * @link      https://github.com/BufferOverflowx86/JSTypography3
